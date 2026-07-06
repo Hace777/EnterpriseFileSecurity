@@ -1,0 +1,249 @@
+// ============================================================================
+//  EnterpriseFileSecurity — 全项目体检与最终完善方案
+//  目标：0 编译错误、0 生成警告、F5 即跑
+// ============================================================================
+
+
+================================================================================
+第一步：NuGet 包清单与版本对齐
+================================================================================
+
+┌──────────────────────────────────────────────────────────────────────────┐
+│  当前目标框架: net10.0 / net10.0-windows                                 │
+│  说明：如果你用的是 .NET 8 SDK，将 csproj 中的 net10.0 全部改为 net8.0    │
+│        如果用的 .NET 6 SDK，改为 net6.0 / net6.0-windows                  │
+└──────────────────────────────────────────────────────────────────────────┘
+
+各项目所需 NuGet 包（当前已配置）：
+
+  EnterpriseFileSecurity.Common (net10.0)：
+    — 无需额外 NuGet 包（仅引用 .NET 内置库）
+
+  EnterpriseFileSecurity.Core (net10.0)：
+    PackageReference：System.Data.SQLite  Version="1.0.118"
+      ✓ 该版本兼容 .NET 6.0/7.0/8.0/9.0/10.0
+
+  EnterpriseFileSecurity.Data (net10.0)：
+    PackageReference：System.Data.SQLite  Version="1.0.118"
+
+  EnterpriseFileSecurity.USB (net10.0-windows)：
+    PackageReference：System.Management   Version="9.0.0"
+    PackageReference：System.Data.SQLite  Version="1.0.118"
+      ⚠ 如果编译报错 NU1107（版本冲突），将 System.Management 改为 8.0.0
+
+  EnterpriseFileSecurity.UI (net10.0-windows)：
+    — 无额外 NuGet 包（WPF 使用内置 SDK，通过 ProjectReference 依赖其他项目）
+
+═══════════════════════════════════════════════════════════════════════════
+关于 DokanNet：
+  · 本版本未集成 Dokan 虚拟文件系统驱动（避免驱动安装/签名问题）。
+  · 加密文件的物理存储路径由 DatabaseInitializer.EncryptedStoragePath 指定
+    （默认 C:\ProgramData\SecFS\EncryptedVault）。
+  · 如果你后续需要透明加密（Z: 盘），则需要额外安装 Dokan 驱动：
+      nuget install DokanNet  →  需要管理员手动安装驱动
+      https://github.com/dokan-dev/dokany/releases
+  · 课设演示建议直接用此"手动加解密 + 路径保护"模式。
+
+
+================================================================================
+第二步：App.xaml 与入口点配置（已修复）
+================================================================================
+
+当前 App.xaml 已移除了 StartupUri（Windows 由 App.xaml.cs 中的 mainWindow.Show() 手动启动）。
+
+App.xaml.cs 启动流程（已实现）：
+  ① DatabaseInitializer.EnsureAllDatabasesCreated()  — 确保 DB 文件存在
+  ② new SQLiteConnection(...) → .Open()               — 打开 KeyStore 连接
+  ③ DatabaseInitializer.SeedDefaultAdmin(conn)        — 创建 admin 用户
+  ④ 手动 new AuthenticationService(conn) → 组装服务    — 无 DI 容器，直接构造
+  ⑤ new MainWindow(auth, acl, audit, keyRot) → .Show()— 注入服务
+  ⑥ 注册 DispatcherUnhandledException                 — 全局异常捕获
+
+  ★ 重要：App.xaml 已无 StartupUri="MainWindow.xaml"，窗口由代码启动
+
+
+================================================================================
+第三步：数据库初始化（已修复）
+================================================================================
+
+DatabaseInitializer 类会自动完成：
+  · 创建目录：
+      C:\ProgramData\SecFS\          (存放 KeyStore.db + EncryptedVault)
+      C:\Users\xxx\AppData\Local\SecFS\  (存放审计日志 + USB告警日志)
+  · 创建 3 个 SQLite 数据库 + 所有表 + 索引
+  · 自动创建默认 admin 账户（密码: Admin@123）
+
+  数据库文件位置：
+    KeyStore.db    →  C:\ProgramData\SecFS\KeyStore.db
+    AuditLog.db    →  %LOCALAPPDATA%\SecFS\AuditLog.db
+    UsbAlertLog.db →  %LOCALAPPDATA%\SecFS\UsbAlertLog.db
+
+  ★ 如果你要在自己的电脑上重新初始化，删除 C:\ProgramData\SecFS\ 文件夹即可
+
+
+================================================================================
+第四步：文件路径与操作系统权限（已修复）
+================================================================================
+
+  ✓ app.manifest 已添加，强制 requireAdministrator
+  ✓ 数据库目录创建使用 try-catch 容错
+  ✓ 日志写入路径使用 LocalApplicationData（普通用户有写权限）
+  ✓ 加密文件存储路径使用 CommonApplicationData（需要管理员权限）
+
+  ⚠ 如果没有管理员权限运行：
+    - WMI USB 监控会报 0x80041003（拒绝访问）→ 必须管理员运行
+    - diskpart offline 操作会失败 → 必须管理员运行
+
+  如果仍报路径权限问题，手动检查：
+    icacls "C:\ProgramData\SecFS" /grant Everyone:F /t
+
+
+================================================================================
+第五步：空引用与异常捕获加固（已修复）
+================================================================================
+
+  已加固位置：
+    ✓ AuditLogger.WriteLoop 改用 TryTake 循环（防止 BlockingCollection 死锁）
+    ✓ AuditLogger.LogSync/LogAsync/QueryByUser 全部包裹 try-catch
+    ✓ AuthenticationService.UserExists() 的 ExecuteScalar 增加 ?? 0L 空合并
+    ✓ AccessControlEngine.GetFileSecurityLevel() 增加 null 目录检查
+    ✓ AccessControlEngine 构造函数 Deserialize 返回值加 ! 抑制 null 警告
+    ✓ MainWindow 所有按钮事件包裹 try-catch
+    ✓ App.xaml.cs 注册 DispatcherUnhandledException + UnhandledException
+
+  ★ 关于 RSA 私钥存储：
+    当前使用 AES-256-GCM 加密后存入 KeyPairs 表。未使用 Windows DPAPI
+    (ProtectedData.Protect)，因为在当前设计中私钥的加密密钥 KEK 由用户密码
+    派生——这意味着密码 = 私钥的保护。如果你希望增加一层系统级别保护，
+    可以改用 ProtectedData.Protect：
+
+  // 替代方案（如果需要在 AES 之上再加一层 DPAPI）：
+  byte[] dpapiProtected = System.Security.Cryptography.ProtectedData.Protect(
+      encPrivKey, null, DataProtectionScope.CurrentUser);
+  // 解密时：
+  byte[] aesEncrypted = ProtectedData.Unprotect(dpapiProtected, null,
+      DataProtectionScope.CurrentUser);
+
+
+================================================================================
+第六步：编译与运行顺序（手把手）
+================================================================================
+
+┌──────────────────────────────────────────────────────────────────────────┐
+│  Step 1：清理解决方案                                                      │
+│    Visual Studio 菜单：Build → Clean Solution                             │
+│    或命令行：cd d:\Resources\小学期实验\EnterpriseFileSecurity             │
+│              dotnet clean EnterpriseFileSecurity.sln                       │
+├──────────────────────────────────────────────────────────────────────────┤
+│  Step 2：还原 NuGet 包                                                     │
+│    Visual Studio：右键解决方案 → Restore NuGet Packages                    │
+│    或命令行：dotnet restore EnterpriseFileSecurity.sln                     │
+├──────────────────────────────────────────────────────────────────────────┤
+│  Step 3：生成顺序检查                                                       │
+│    正确顺序（依赖关系从上到下）：                                             │
+│      ① EnterpriseFileSecurity.Common  (无依赖)                             │
+│      ② EnterpriseFileSecurity.Core    (依赖 Common)                        │
+│      ③ EnterpriseFileSecurity.Data    (依赖 Common + System.Data.SQLite)   │
+│      ④ EnterpriseFileSecurity.USB     (依赖 Common + System.Management)    │
+│      ⑤ EnterpriseFileSecurity.UI      (依赖 Core + Data + USB)            │
+│                                                                           │
+│    验证方法：                                                               │
+│      dotnet build EnterpriseFileSecurity.sln --no-restore                  │
+├──────────────────────────────────────────────────────────────────────────┤
+│  Step 4：设为启动项目                                                        │
+│    Visual Studio：右键 EnterpriseFileSecurity.UI → Set as Startup Project │
+├──────────────────────────────────────────────────────────────────────────┤
+│  Step 5：按 F5 运行                                                        │
+│    程序启动 → 自动创建数据库 → 创建种子 admin 账户 → 主窗口自动弹出            │
+│                                                                           │
+│    种子账户：用户名 admin  密码 Admin@123                                   │
+│    在登录界面可以注册新用户或直接登录 admin                                    │
+├──────────────────────────────────────────────────────────────────────────┤
+│  Step 6：如果按 F5 后窗口一闪而过                                             │
+│    ① 查看 Visual Studio "输出"窗口 → "调试" 分类 → 找异常行                     │
+│    ② 常见原因：                                                              │
+│       - C:\ProgramData\SecFS 目录创建失败 → 试试以管理员运行 VS               │
+│       - SQLite DLL 找不到 → 检查 bin\Debug 下是否有 System.Data.SQLite.dll   │
+│       - CS0234 命名空间缺失 → 说明 Common 项目没编译 → 首先生成 Common 项目    │
+│       - CS1061 方法未找到 → 说明接口与实现不匹配 → Clean + Rebuild            │
+└──────────────────────────────────────────────────────────────────────────┘
+
+
+================================================================================
+高频报错与修复速查表
+================================================================================
+
+┌─────────────────────────────┬──────────────────────────────────────────────┐
+│          错误现象             │              原因 + 修复方法                  │
+├─────────────────────────────┼──────────────────────────────────────────────┤
+│ CS0234: 命名空间              │ 项目引用缺失。                                │
+│ 'EnterpriseFileSecurity.     │ → 检查 .csproj 中的 ProjectReference 是否    │
+│ Common' 中不存在类型名        │   正确。右键"依赖项"→重新扫描。                 │
+├─────────────────────────────┼──────────────────────────────────────────────┤
+│ CS1061: 'xxx'未包含          │ 类没有实现接口中声明的方法。                     │
+│ 'yyy'的定义                 │ → 检查 .cs 文件中类声明是否有 ": Ixxx"          │
+│                             │   比如 public class AuthService : IAuthService│
+├─────────────────────────────┼──────────────────────────────────────────────┤
+│ CS0246: 未找到类型或          │ using 指令缺失。                              │
+│ 命名空间名称                 │ → 在报错文件顶部添加正确的 using 语句。           │
+│                             │   例如缺少 using EnterpriseFileSecurity.Common;│
+├─────────────────────────────┼──────────────────────────────────────────────┤
+│ WMI 报错 0x80041003          │ WMI 操作需要管理员权限。                        │
+│ (Access Denied)             │ → 右键 VS → "以管理员身份运行"。                  │
+│                             │   确认 app.manifest 包含 requireAdministrator。 │
+├─────────────────────────────┼──────────────────────────────────────────────┤
+│ WMI 报错 0x80041010          │ WMI 查询语法错误或类名不存在。                   │
+│ (Invalid Class)             │ → 检查 WMI 查询语句，确认 Win32_ 类名拼写正确。    │
+├─────────────────────────────┼──────────────────────────────────────────────┤
+│ SQLite "Unable to load       │ 缺少 SQLite.Interop.dll。                     │
+│ DLL 'SQLite.Interop.dll'"   │ → NuGet 包还原不完整，重新执行 "Restore"。       │
+│                             │   或者在 bin\Debug\runtimes\ 下放置正确的       │
+│                             │   SQLite.Interop.dll (x86/x64)。              │
+├─────────────────────────────┼──────────────────────────────────────────────┤
+│ CryptographicException:      │ AES-GCM 解密时 Tag 不匹配。                    │
+│ "The computed                │ → 密文被篡改 OR IV/Key 不对 OR 加密解密使用    │
+│  authentication tag..."      │   的不是同一个 Nonce。                         │
+├─────────────────────────────┼──────────────────────────────────────────────┤
+│ System.IO.IOException:       │ 文件被其他进程占用。                            │
+│ 文件正在被另一进程使用         │ → 使用 using 语句确保 FileStream 正确释放。      │
+│                             │   如果是 SQLite 数据库文件，关闭所有连接后重试。   │
+├─────────────────────────────┼──────────────────────────────────────────────┤
+│ NU1107: 版本冲突检测到        │ NuGet 包的版本不兼容目标框架。                   │
+│ 'System.Management'          │ → 尝试降级：System.Management 改为 8.0.0        │
+│                             │   如果是 .NET 6 SDK，所有 TargetFramework 改     │
+│                             │   为 net6.0 / net6.0-windows。                 │
+├─────────────────────────────┼──────────────────────────────────────────────┤
+│ 窗口一闪而过 / 无响应         │ App.xaml.cs 中未调用 mainWindow.Show()。        │
+│                             │ → 确认 App.xaml 没有 StartupUri 属性。          │
+│                             │   确认 App.xaml.cs 的 OnStartup 末尾有 Show()。 │
+├─────────────────────────────┼──────────────────────────────────────────────┤
+│ 点击登录按钮无反应             │ Button Click 事件未绑定。                       │
+│                             │ → 确认 MainWindow.xaml 中 Button 有             │
+│                             │   Click="BtnLogin_Click" 属性。                │
+└─────────────────────────────┴──────────────────────────────────────────────┘
+
+
+================================================================================
+一句话总结：如何按 F5 保证弹出登录窗口？
+================================================================================
+
+  ① 右键 VS → "以管理员身份运行"
+  ② Build → Clean Solution
+  ③ Build → Rebuild Solution
+  ④ 确认 EnterpriseFileSecurity.UI 是启动项目（右键 → Set as Startup Project）
+  ⑤ 按 F5
+  ⑥ 看到深蓝色标题栏窗口 → 左侧点"用户登录"→ 输入 admin / Admin@123
+  ⑦ 点击"登录"按钮 → 绿色文字"✓ 登录成功！欢迎 系统管理员。"
+
+═══════════════════════════════════════════════════════════════════════════
+
+如果第④步之后编译报错：
+  · 若错误为 CS0234 → 说明项目引用断了，逐步生成：
+      ① 右键 Common 项目 → Build
+      ② 右键 Core 项目 → Build
+      ③ 右键 Data 项目 → Build
+      ④ 右键 USB 项目 → Build
+      ⑤ 右键 UI 项目 → Build
+  · 若错误为 CS0103 → 找到报错的那一行，添加缺失的 using 语句
+  · 若错误为 NU1107 → 打开 NuGet 包管理器 → 更新 → 全部更新到最新
+  · 若 SQLite.Interop.dll 缺失 → 关闭 VS → 删除 bin 和 obj 文件夹 → 重新打开 → Rebuild

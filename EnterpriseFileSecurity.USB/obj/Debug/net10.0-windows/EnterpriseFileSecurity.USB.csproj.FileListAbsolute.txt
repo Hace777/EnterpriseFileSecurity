@@ -1,0 +1,17 @@
+D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.USB\bin\Debug\net10.0-windows\EnterpriseFileSecurity.USB.deps.json
+D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.USB\bin\Debug\net10.0-windows\EnterpriseFileSecurity.USB.runtimeconfig.json
+D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.USB\bin\Debug\net10.0-windows\EnterpriseFileSecurity.USB.dll
+D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.USB\bin\Debug\net10.0-windows\EnterpriseFileSecurity.USB.pdb
+D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.USB\bin\Debug\net10.0-windows\EnterpriseFileSecurity.Common.dll
+D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.USB\bin\Debug\net10.0-windows\EnterpriseFileSecurity.Common.pdb
+D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.USB\obj\Debug\net10.0-windows\EnterpriseFileSecurity.USB.csproj.AssemblyReference.cache
+D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.USB\obj\Debug\net10.0-windows\EnterpriseFileSecurity.USB.GeneratedMSBuildEditorConfig.editorconfig
+D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.USB\obj\Debug\net10.0-windows\EnterpriseFileSecurity.USB.AssemblyInfoInputs.cache
+D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.USB\obj\Debug\net10.0-windows\EnterpriseFileSecurity.USB.AssemblyInfo.cs
+D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.USB\obj\Debug\net10.0-windows\EnterpriseFileSecurity.USB.csproj.CoreCompileInputs.cache
+D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.USB\obj\Debug\net10.0-windows\Enterpri.FA88328C.Up2Date
+D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.USB\obj\Debug\net10.0-windows\EnterpriseFileSecurity.USB.dll
+D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.USB\obj\Debug\net10.0-windows\refint\EnterpriseFileSecurity.USB.dll
+D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.USB\obj\Debug\net10.0-windows\EnterpriseFileSecurity.USB.pdb
+D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.USB\obj\Debug\net10.0-windows\EnterpriseFileSecurity.USB.genruntimeconfig.cache
+D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.USB\obj\Debug\net10.0-windows\ref\EnterpriseFileSecurity.USB.dll

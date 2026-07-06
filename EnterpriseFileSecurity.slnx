@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="EnterpriseFileSecurity.Common/EnterpriseFileSecurity.Common.csproj" />
+  <Project Path="EnterpriseFileSecurity.Core/EnterpriseFileSecurity.Core.csproj" />
+  <Project Path="EnterpriseFileSecurity.Data/EnterpriseFileSecurity.Data.csproj" />
+  <Project Path="EnterpriseFileSecurity.UI/EnterpriseFileSecurity.UI.csproj" />
+  <Project Path="EnterpriseFileSecurity.USB/EnterpriseFileSecurity.USB.vbproj" />
+</Solution>

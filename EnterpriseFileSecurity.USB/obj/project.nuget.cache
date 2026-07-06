@@ -1,0 +1,54 @@
+{
+  "version": 2,
+  "dgSpecHash": "QI8Ay2BY2Wo=",
+  "success": true,
+  "projectFilePath": "d:\\Resources\\小学期实验\\EnterpriseFileSecurity\\EnterpriseFileSecurity.USB\\EnterpriseFileSecurity.USB.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\18094\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
+    "C:\\Users\\18094\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
+    "C:\\Users\\18094\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\18094\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
+    "C:\\Users\\18094\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
+    "C:\\Users\\18094\\.nuget\\packages\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
+    "C:\\Users\\18094\\.nuget\\packages\\runtime.win-x86.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
+    "C:\\Users\\18094\\.nuget\\packages\\stub.system.data.sqlite.core.netstandard\\1.0.118\\stub.system.data.sqlite.core.netstandard.1.0.118.nupkg.sha512",
+    "C:\\Users\\18094\\.nuget\\packages\\system.codedom\\9.0.0\\system.codedom.9.0.0.nupkg.sha512",
+    "C:\\Users\\18094\\.nuget\\packages\\system.componentmodel.annotations\\4.7.0\\system.componentmodel.annotations.4.7.0.nupkg.sha512",
+    "C:\\Users\\18094\\.nuget\\packages\\system.configuration.configurationmanager\\4.7.0\\system.configuration.configurationmanager.4.7.0.nupkg.sha512",
+    "C:\\Users\\18094\\.nuget\\packages\\system.data.sqlclient\\4.8.1\\system.data.sqlclient.4.8.1.nupkg.sha512",
+    "C:\\Users\\18094\\.nuget\\packages\\system.data.sqlite\\1.0.118\\system.data.sqlite.1.0.118.nupkg.sha512",
+    "C:\\Users\\18094\\.nuget\\packages\\system.data.sqlite.core\\1.0.118\\system.data.sqlite.core.1.0.118.nupkg.sha512",
+    "C:\\Users\\18094\\.nuget\\packages\\system.data.sqlite.ef6\\1.0.118\\system.data.sqlite.ef6.1.0.118.nupkg.sha512",
+    "C:\\Users\\18094\\.nuget\\packages\\system.drawing.common\\4.7.0\\system.drawing.common.4.7.0.nupkg.sha512",
+    "C:\\Users\\18094\\.nuget\\packages\\system.management\\9.0.0\\system.management.9.0.0.nupkg.sha512",
+    "C:\\Users\\18094\\.nuget\\packages\\system.security.cryptography.protecteddata\\4.7.0\\system.security.cryptography.protecteddata.4.7.0.nupkg.sha512",
+    "C:\\Users\\18094\\.nuget\\packages\\system.security.permissions\\4.7.0\\system.security.permissions.4.7.0.nupkg.sha512",
+    "C:\\Users\\18094\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "message": "包 \"System.Data.SqlClient\" 4.8.1 具有已知的 中 严重性漏洞，https://github.com/advisories/GHSA-8g2p-5pqh-5jmc",
+      "projectPath": "d:\\Resources\\小学期实验\\EnterpriseFileSecurity\\EnterpriseFileSecurity.USB\\EnterpriseFileSecurity.USB.csproj",
+      "warningLevel": 1,
+      "filePath": "d:\\Resources\\小学期实验\\EnterpriseFileSecurity\\EnterpriseFileSecurity.USB\\EnterpriseFileSecurity.USB.csproj",
+      "libraryId": "System.Data.SqlClient",
+      "targetGraphs": [
+        "net10.0-windows7.0"
+      ]
+    },
+    {
+      "code": "NU1904",
+      "level": "Warning",
+      "message": "包 \"System.Drawing.Common\" 4.7.0 具有已知的 严重 严重性漏洞，https://github.com/advisories/GHSA-rxg9-xrhp-64gj",
+      "projectPath": "d:\\Resources\\小学期实验\\EnterpriseFileSecurity\\EnterpriseFileSecurity.USB\\EnterpriseFileSecurity.USB.csproj",
+      "warningLevel": 1,
+      "filePath": "d:\\Resources\\小学期实验\\EnterpriseFileSecurity\\EnterpriseFileSecurity.USB\\EnterpriseFileSecurity.USB.csproj",
+      "libraryId": "System.Drawing.Common",
+      "targetGraphs": [
+        "net10.0-windows7.0"
+      ]
+    }
+  ]
+}

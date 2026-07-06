@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>EnterpriseFileSecurity.UI</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EnterpriseFileSecurity.Core\EnterpriseFileSecurity.Core.csproj" />
+    <ProjectReference Include="..\EnterpriseFileSecurity.Data\EnterpriseFileSecurity.Data.csproj" />
+    <ProjectReference Include="..\EnterpriseFileSecurity.USB\EnterpriseFileSecurity.USB.csproj" />
+  </ItemGroup>
+</Project>

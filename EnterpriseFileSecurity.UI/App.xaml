@@ -1,0 +1,9 @@
+<Application x:Class="EnterpriseFileSecurity.UI.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Application.Resources>
+        <SolidColorBrush x:Key="PrimaryBrush" Color="#1A237E"/>
+        <SolidColorBrush x:Key="AccentBrush" Color="#D32F2F"/>
+        <SolidColorBrush x:Key="SuccessBrush" Color="#2E7D32"/>
+    </Application.Resources>
+</Application>

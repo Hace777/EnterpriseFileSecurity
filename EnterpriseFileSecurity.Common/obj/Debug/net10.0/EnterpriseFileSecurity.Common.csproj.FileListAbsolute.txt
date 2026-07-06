@@ -1,0 +1,11 @@
+D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.Common\bin\Debug\net10.0\EnterpriseFileSecurity.Common.deps.json
+D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.Common\bin\Debug\net10.0\EnterpriseFileSecurity.Common.dll
+D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.Common\bin\Debug\net10.0\EnterpriseFileSecurity.Common.pdb
+D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.Common\obj\Debug\net10.0\EnterpriseFileSecurity.Common.GeneratedMSBuildEditorConfig.editorconfig
+D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.Common\obj\Debug\net10.0\EnterpriseFileSecurity.Common.AssemblyInfoInputs.cache
+D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.Common\obj\Debug\net10.0\EnterpriseFileSecurity.Common.AssemblyInfo.cs
+D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.Common\obj\Debug\net10.0\EnterpriseFileSecurity.Common.csproj.CoreCompileInputs.cache
+D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.Common\obj\Debug\net10.0\EnterpriseFileSecurity.Common.dll
+D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.Common\obj\Debug\net10.0\refint\EnterpriseFileSecurity.Common.dll
+D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.Common\obj\Debug\net10.0\EnterpriseFileSecurity.Common.pdb
+D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.Common\obj\Debug\net10.0\ref\EnterpriseFileSecurity.Common.dll

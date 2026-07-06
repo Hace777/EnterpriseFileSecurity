@@ -1,0 +1,17 @@
+D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.Core\bin\Debug\net10.0\EnterpriseFileSecurity.Core.deps.json
+D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.Core\bin\Debug\net10.0\EnterpriseFileSecurity.Core.runtimeconfig.json
+D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.Core\bin\Debug\net10.0\EnterpriseFileSecurity.Core.dll
+D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.Core\bin\Debug\net10.0\EnterpriseFileSecurity.Core.pdb
+D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.Core\bin\Debug\net10.0\EnterpriseFileSecurity.Common.dll
+D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.Core\bin\Debug\net10.0\EnterpriseFileSecurity.Common.pdb
+D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.Core\obj\Debug\net10.0\EnterpriseFileSecurity.Core.csproj.AssemblyReference.cache
+D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.Core\obj\Debug\net10.0\EnterpriseFileSecurity.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.Core\obj\Debug\net10.0\EnterpriseFileSecurity.Core.AssemblyInfoInputs.cache
+D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.Core\obj\Debug\net10.0\EnterpriseFileSecurity.Core.AssemblyInfo.cs
+D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.Core\obj\Debug\net10.0\EnterpriseFileSecurity.Core.csproj.CoreCompileInputs.cache
+D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.Core\obj\Debug\net10.0\Enterpri.D02D081E.Up2Date
+D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.Core\obj\Debug\net10.0\EnterpriseFileSecurity.Core.dll
+D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.Core\obj\Debug\net10.0\refint\EnterpriseFileSecurity.Core.dll
+D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.Core\obj\Debug\net10.0\EnterpriseFileSecurity.Core.pdb
+D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.Core\obj\Debug\net10.0\EnterpriseFileSecurity.Core.genruntimeconfig.cache
+D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.Core\obj\Debug\net10.0\ref\EnterpriseFileSecurity.Core.dll
