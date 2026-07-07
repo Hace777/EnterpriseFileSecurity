@@ -9,6 +9,7 @@ D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.Core\
 D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.Core\obj\Debug\net10.0\EnterpriseFileSecurity.Core.AssemblyInfoInputs.cache
 D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.Core\obj\Debug\net10.0\EnterpriseFileSecurity.Core.AssemblyInfo.cs
 D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.Core\obj\Debug\net10.0\EnterpriseFileSecurity.Core.csproj.CoreCompileInputs.cache
+D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.Core\obj\Debug\net10.0\EnterpriseFileSecurity.Core.sourcelink.json
 D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.Core\obj\Debug\net10.0\Enterpri.D02D081E.Up2Date
 D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.Core\obj\Debug\net10.0\EnterpriseFileSecurity.Core.dll
 D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.Core\obj\Debug\net10.0\refint\EnterpriseFileSecurity.Core.dll

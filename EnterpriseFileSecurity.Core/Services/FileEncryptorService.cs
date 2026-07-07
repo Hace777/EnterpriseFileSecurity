@@ -48,16 +48,13 @@ public class FileEncryptorService : IFileEncryptorService
         if (!File.Exists(sourceFilePath))
             throw new FileNotFoundException("源文件不存在", sourceFilePath);
 
-        // 1. 生成文件加密密钥（FEK）
-        byte[] fek = AesGcmEncryption.GenerateAesKey();
-
-        // 2. 为每个授权用户生成EFEK（用RSA公钥加密FEK）
-        var (fekBytes, efekList) = _authService.GenerateAndEncryptFEK(authorizedUserIds);
+        // 1. 为每个授权用户生成 EFEK（用 RSA 公钥加密同一把 FEK），返回的 fek 即实际加密密钥
+        var (fek, efekList) = _authService.GenerateAndEncryptFEK(authorizedUserIds);
         var efekMap = new Dictionary<string, byte[]>();
         foreach (var (userId, efek) in efekList)
             efekMap[userId] = efek;
 
-        // 3. 读取源文件并分块加密
+        // 2. 读取源文件并分块加密
         byte[] sourceData = File.ReadAllBytes(sourceFilePath);
         int totalChunks = (int)Math.Ceiling((double)sourceData.Length / ChunkSize);
         if (totalChunks == 0) totalChunks = 1; // 空文件也占1个块
@@ -86,7 +83,7 @@ public class FileEncryptorService : IFileEncryptorService
             });
         }
 
-        // 4. 构建元数据
+        // 3. 构建元数据
         var metadata = new EncryptedFileMetadata
         {
             OriginalFileName = Path.GetFileName(sourceFilePath),
@@ -99,7 +96,7 @@ public class FileEncryptorService : IFileEncryptorService
             Chunks = chunks
         };
 
-        // 5. 生成加密文件
+        // 4. 生成加密文件
         string encryptedFileName = $"{Guid.NewGuid():N}.secfs";
         string encryptedFilePath = Path.Combine(_vaultPath, encryptedFileName);
         WriteEncryptedFile(encryptedFilePath, metadata, encryptedStream.ToArray());
@@ -151,11 +148,20 @@ public class FileEncryptorService : IFileEncryptorService
             plaintextStream.Write(plaintext, 0, plaintext.Length);
         }
 
-        // 5. 写入临时文件
-        string tempPath = Path.Combine(Path.GetTempPath(), $"secfs_dec_{Guid.NewGuid():N}.tmp");
-        File.WriteAllBytes(tempPath, plaintextStream.ToArray());
+        // 5. 写入解密文件（输出到解密目录，保留原文件名）
+        string outputFileName = metadata.OriginalFileName ?? $"decrypted_{Guid.NewGuid():N}";
+        string outputPath = Path.Combine(DatabaseInitializer.DecryptedOutputPath, outputFileName);
+        // 若同名文件已存在，追加序号
+        if (File.Exists(outputPath))
+        {
+            string nameNoExt = Path.GetFileNameWithoutExtension(outputFileName);
+            string ext = Path.GetExtension(outputFileName);
+            outputPath = Path.Combine(DatabaseInitializer.DecryptedOutputPath,
+                $"{nameNoExt}_{DateTime.Now:HHmmss}{ext}");
+        }
+        File.WriteAllBytes(outputPath, plaintextStream.ToArray());
 
-        return tempPath;
+        return outputPath;
     }
 
     public EncryptedFileMetadata ReadMetadata(string encryptedFilePath)
@@ -167,6 +173,17 @@ public class FileEncryptorService : IFileEncryptorService
     public List<string> ListEncryptedFiles()
     {
         return Directory.GetFiles(_vaultPath, "*.secfs").ToList();
+    }
+
+    /// <summary>清理 Vault 中所有 .secfs 文件，返回删除数量</summary>
+    public int ClearVault()
+    {
+        int count = 0;
+        foreach (var f in Directory.GetFiles(_vaultPath, "*.secfs"))
+        {
+            try { File.Delete(f); count++; } catch { }
+        }
+        return count;
     }
 
     #region 文件格式读写

@@ -105,7 +105,15 @@ public partial class App : Application
                 $"USB设备移除: {deviceInfo.Model}");
         };
 
-        // ── 第五步：将服务注入到 MainWindow ────────────────────────────
+        // ── 第五步：清理旧加密文件 + 注入 MainWindow ────────────────────
+        try
+        {
+            int cleaned = FileEncryptor.ClearVault();
+            if (cleaned > 0)
+                System.Diagnostics.Debug.WriteLine($"[SecFS] 启动时清理了 {cleaned} 个旧加密文件");
+        }
+        catch (Exception ex) { System.Diagnostics.Debug.WriteLine($"[SecFS] 清理加密文件失败: {ex.Message}"); }
+
         var mainWindow = new MainWindow(
             AuthService, AclEngine, AuditLogger, KeyRotationService, FileEncryptor,
             UsbMonitor, UsbWhitelist, UsbBlocker, UsbScanner, UsbAlertLogger, HotPlugManager);

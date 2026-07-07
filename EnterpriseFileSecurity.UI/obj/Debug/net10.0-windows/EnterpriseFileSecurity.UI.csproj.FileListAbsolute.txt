@@ -38,6 +38,7 @@ D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.UI\ob
 D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.UI\obj\Debug\net10.0-windows\EnterpriseFileSecurity.UI.AssemblyInfoInputs.cache
 D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.UI\obj\Debug\net10.0-windows\EnterpriseFileSecurity.UI.AssemblyInfo.cs
 D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.UI\obj\Debug\net10.0-windows\EnterpriseFileSecurity.UI.csproj.CoreCompileInputs.cache
+D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.UI\obj\Debug\net10.0-windows\EnterpriseFileSecurity.UI.sourcelink.json
 D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.UI\obj\Debug\net10.0-windows\Enterpri.233494B4.Up2Date
 D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.UI\obj\Debug\net10.0-windows\EnterpriseFileSecurity.UI.dll
 D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.UI\obj\Debug\net10.0-windows\refint\EnterpriseFileSecurity.UI.dll

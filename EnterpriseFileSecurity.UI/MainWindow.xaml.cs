@@ -358,7 +358,10 @@ public partial class MainWindow : Window
                     Result = AuditResult.Allow, Detail = "文件解密"
                 });
             }
-            catch (Exception ex) { lblDecResult.Foreground = Brushes.Red; lblDecResult.Text = $"解密失败: {ex.Message}"; }
+            catch (UnauthorizedAccessException ex) { lblDecResult.Foreground = Brushes.Red; lblDecResult.Text = $"解密失败: {ex.Message}"; }
+            catch (InvalidOperationException ex) { lblDecResult.Foreground = Brushes.Red; lblDecResult.Text = $"解密失败: {ex.Message}"; }
+            catch (InvalidDataException ex) { lblDecResult.Foreground = Brushes.Red; lblDecResult.Text = $"解密失败: {ex.Message}"; }
+            catch (Exception ex) { lblDecResult.Foreground = Brushes.Red; lblDecResult.Text = $"解密失败（密钥不匹配，请重新加密文件后解密）: {ex.Message}"; }
         };
         decStack.Children.Add(btnDecrypt);
         decStack.Children.Add(lblDecResult);
@@ -389,6 +392,22 @@ public partial class MainWindow : Window
         };
         ContentPanel.Children.Add(btnList);
         ContentPanel.Children.Add(listBox);
+
+        // ── 清理按钮 ──
+        var btnCleanVault = new Button { Content = "清理加密存储（删除所有 .secfs 文件）", Width = 280, Height = 28, Margin = new Thickness(0, 8, 0, 0) };
+        btnCleanVault.Click += (_, _) =>
+        {
+            var result = MessageBox.Show("确定要删除加密存储中的所有文件吗？\n此操作不可恢复！", "确认清理",
+                MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (result == MessageBoxResult.Yes)
+            {
+                int count = _fileEnc.ClearVault();
+                MessageBox.Show($"已清理 {count} 个加密文件。", "清理完成");
+                listBox.Items.Clear();
+                listBox.Items.Add("(暂无加密文件)");
+            }
+        };
+        ContentPanel.Children.Add(btnCleanVault);
 
         TxtStatus.Text = "状态：文件加解密管理";
     }

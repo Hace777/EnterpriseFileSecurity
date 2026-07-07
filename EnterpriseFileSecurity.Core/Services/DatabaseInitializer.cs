@@ -17,13 +17,22 @@ public static class DatabaseInitializer
     public static string KeyStoreDbPath => Path.Combine(DefaultDbDirectory, "KeyStore.db");
     public static string AuditDbPath => Path.Combine(DefaultAuditDbDirectory, "AuditLog.db");
     public static string UsbAlertDbPath => Path.Combine(DefaultAuditDbDirectory, "UsbAlertLog.db");
-    public static string EncryptedStoragePath => Path.Combine(DefaultDbDirectory, "EncryptedVault");
+
+    /// <summary>加密文件（密文）存储路径</summary>
+    public static string EncryptedStoragePath => Path.Combine(OutputBaseDir, "加密文件");
+
+    /// <summary>解密后文件（明文）输出路径</summary>
+    public static string DecryptedOutputPath => Path.Combine(OutputBaseDir, "解密文件");
+
+    /// <summary>所有测试输出根目录</summary>
+    private static readonly string OutputBaseDir = @"D:\Resources\小学期实验\测试";
 
     static DatabaseInitializer()
     {
         try { Directory.CreateDirectory(DefaultDbDirectory); } catch { }
         try { Directory.CreateDirectory(DefaultAuditDbDirectory); } catch { }
         try { Directory.CreateDirectory(EncryptedStoragePath); } catch { }
+        try { Directory.CreateDirectory(DecryptedOutputPath); } catch { }
     }
 
     public static void EnsureAllDatabasesCreated()

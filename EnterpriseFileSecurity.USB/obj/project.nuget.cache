@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "QI8Ay2BY2Wo=",
+  "dgSpecHash": "lsWbsN3dyLs=",
   "success": true,
   "projectFilePath": "d:\\Resources\\小学期实验\\EnterpriseFileSecurity\\EnterpriseFileSecurity.USB\\EnterpriseFileSecurity.USB.csproj",
   "expectedPackageFiles": [
@@ -35,7 +35,7 @@
       "filePath": "d:\\Resources\\小学期实验\\EnterpriseFileSecurity\\EnterpriseFileSecurity.USB\\EnterpriseFileSecurity.USB.csproj",
       "libraryId": "System.Data.SqlClient",
       "targetGraphs": [
-        "net10.0-windows7.0"
+        "net10.0-windows"
       ]
     },
     {
@@ -47,7 +47,7 @@
       "filePath": "d:\\Resources\\小学期实验\\EnterpriseFileSecurity\\EnterpriseFileSecurity.USB\\EnterpriseFileSecurity.USB.csproj",
       "libraryId": "System.Drawing.Common",
       "targetGraphs": [
-        "net10.0-windows7.0"
+        "net10.0-windows"
       ]
     }
   ]

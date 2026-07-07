@@ -22,6 +22,9 @@ public interface IFileEncryptorService
 
     /// <summary>加密存储根目录</summary>
     string VaultPath { get; }
+
+    /// <summary>清理加密存储目录中的所有 .secfs 文件</summary>
+    int ClearVault();
 }
 
 /// <summary>

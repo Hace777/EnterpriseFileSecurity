@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "D:\\Resources\\\u5C0F\u5B66\u671F\u5B9E\u9A8C\\EnterpriseFileSecurity\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{B9653CED-27D1-EACE-45CD-CFC2B3D62341}|EnterpriseFileSecurity.Core\\EnterpriseFileSecurity.Core.csproj|d:\\resources\\\u5C0F\u5B66\u671F\u5B9E\u9A8C\\enterprisefilesecurity\\enterprisefilesecurity.core\\services\\accesscontrolengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9653CED-27D1-EACE-45CD-CFC2B3D62341}|EnterpriseFileSecurity.Core\\EnterpriseFileSecurity.Core.csproj|solutionrelative:enterprisefilesecurity.core\\services\\accesscontrolengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1F583162-9A42-1871-FBE7-CC0B78E1A599}|EnterpriseFileSecurity.UI\\EnterpriseFileSecurity.UI.csproj|d:\\resources\\\u5C0F\u5B66\u671F\u5B9E\u9A8C\\enterprisefilesecurity\\enterprisefilesecurity.ui\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1F583162-9A42-1871-FBE7-CC0B78E1A599}|EnterpriseFileSecurity.UI\\EnterpriseFileSecurity.UI.csproj|solutionrelative:enterprisefilesecurity.ui\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -30,11 +34,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "AccessControlEngine.cs",
+              "DocumentMoniker": "D:\\Resources\\\u5C0F\u5B66\u671F\u5B9E\u9A8C\\EnterpriseFileSecurity\\EnterpriseFileSecurity.Core\\Services\\AccessControlEngine.cs",
+              "RelativeDocumentMoniker": "EnterpriseFileSecurity.Core\\Services\\AccessControlEngine.cs",
+              "ToolTip": "D:\\Resources\\\u5C0F\u5B66\u671F\u5B9E\u9A8C\\EnterpriseFileSecurity\\EnterpriseFileSecurity.Core\\Services\\AccessControlEngine.cs",
+              "RelativeToolTip": "EnterpriseFileSecurity.Core\\Services\\AccessControlEngine.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABEAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-07T05:22:37.792Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Class1.cs",
               "DocumentMoniker": "D:\\Resources\\\u5C0F\u5B66\u671F\u5B9E\u9A8C\\EnterpriseFileSecurity\\EnterpriseFileSecurity.Common\\Class1.cs",
               "RelativeDocumentMoniker": "EnterpriseFileSecurity.Common\\Class1.cs",
@@ -46,7 +63,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Class1.cs",
               "DocumentMoniker": "D:\\Resources\\\u5C0F\u5B66\u671F\u5B9E\u9A8C\\EnterpriseFileSecurity\\EnterpriseFileSecurity.Core\\Class1.cs",
               "RelativeDocumentMoniker": "EnterpriseFileSecurity.Core\\Class1.cs",
@@ -58,20 +75,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "D:\\Resources\\\u5C0F\u5B66\u671F\u5B9E\u9A8C\\EnterpriseFileSecurity\\EnterpriseFileSecurity.UI\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "EnterpriseFileSecurity.UI\\MainWindow.xaml.cs",
               "ToolTip": "D:\\Resources\\\u5C0F\u5B66\u671F\u5B9E\u9A8C\\EnterpriseFileSecurity\\EnterpriseFileSecurity.UI\\MainWindow.xaml.cs",
               "RelativeToolTip": "EnterpriseFileSecurity.UI\\MainWindow.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFcCAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAFcCAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-29T02:59:44.226Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-29T02:59:44.226Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Class1.cs",
               "DocumentMoniker": "D:\\Resources\\\u5C0F\u5B66\u671F\u5B9E\u9A8C\\EnterpriseFileSecurity\\EnterpriseFileSecurity.Data\\Class1.cs",
               "RelativeDocumentMoniker": "EnterpriseFileSecurity.Data\\Class1.cs",
@@ -83,7 +99,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "D:\\Resources\\\u5C0F\u5B66\u671F\u5B9E\u9A8C\\EnterpriseFileSecurity\\EnterpriseFileSecurity.UI\\MainWindow.xaml",
               "RelativeDocumentMoniker": "EnterpriseFileSecurity.UI\\MainWindow.xaml",

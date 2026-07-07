@@ -5,6 +5,7 @@ D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.Commo
 D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.Common\obj\Debug\net10.0\EnterpriseFileSecurity.Common.AssemblyInfoInputs.cache
 D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.Common\obj\Debug\net10.0\EnterpriseFileSecurity.Common.AssemblyInfo.cs
 D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.Common\obj\Debug\net10.0\EnterpriseFileSecurity.Common.csproj.CoreCompileInputs.cache
+D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.Common\obj\Debug\net10.0\EnterpriseFileSecurity.Common.sourcelink.json
 D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.Common\obj\Debug\net10.0\EnterpriseFileSecurity.Common.dll
 D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.Common\obj\Debug\net10.0\refint\EnterpriseFileSecurity.Common.dll
 D:\Resources\小学期实验\EnterpriseFileSecurity\EnterpriseFileSecurity.Common\obj\Debug\net10.0\EnterpriseFileSecurity.Common.pdb
